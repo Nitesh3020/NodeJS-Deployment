@@ -1,20 +1,6 @@
-# Use official Node.js image
-FROM node:20-alpine 
-
-# Set working directory
+FROM node:22-alpine 
 WORKDIR /app
-
-# Copy package.json and package-lock.json first
-COPY package*.json ./
-
-# Install dependencies
+COPY . /app/
 RUN npm install
-
-# Copy the rest of the application files
-COPY . .
-
-# Expose the application port
-EXPOSE 3000
-
-# Start the application
-CMD ["npm", "start"]
+EXPOSE 80
+CMD [ "node", "index.js" ]
